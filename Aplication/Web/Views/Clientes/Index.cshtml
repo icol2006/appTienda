@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DAL.Models.Cliente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nomcli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipdoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numdoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.correo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomcli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipdoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numdoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.correo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.CodCli.Trim() }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CodCli.Trim() }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CodCli.Trim() })
+        </td>
+    </tr>
+}
+
+</table>

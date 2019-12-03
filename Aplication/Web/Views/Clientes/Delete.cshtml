@@ -1,0 +1,72 @@
+﻿@model DAL.Models.Cliente
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nomcli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomcli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipdoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipdoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numdoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numdoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.correo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

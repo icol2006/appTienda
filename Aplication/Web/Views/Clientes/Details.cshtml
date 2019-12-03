@@ -1,0 +1,66 @@
+﻿@model DAL.Models.Cliente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nomcli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomcli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipdoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipdoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numdoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numdoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.correo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CodCli }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
