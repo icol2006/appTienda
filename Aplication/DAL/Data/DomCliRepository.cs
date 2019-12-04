@@ -104,14 +104,18 @@ namespace DAL.Data
             return DomCli;
         }
 
-        public void Delete(DomCli DomCli)
+        public void Delete(DomCli domCli)
         {
             try
             {
                 using (DatabaseContext context = new DatabaseContext())
                 {
-                    var res = DomCli != null ? context.DomCli.Remove(DomCli) : null;
-                    context.SaveChanges();
+                    if(domCli!=null)
+                    {
+                        context.DomCli.Attach(domCli);
+                        context.Entry(domCli).State = EntityState.Deleted;
+                        context.SaveChanges();
+                    }    
                 }
             }
             catch (Exception ex)

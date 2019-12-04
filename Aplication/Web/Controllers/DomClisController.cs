@@ -70,7 +70,7 @@ namespace Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
              var  domCli=domCliRepository.GetOne(x => x.CodDom.Equals(codDom) && 
-                        x.CodCli.Equals(codCli),null);
+                        x.CodCli.Equals(codCli), new String[] { "Cliente" });
 
             if (domCli == null)
             {
@@ -90,27 +90,20 @@ namespace Web.Controllers
             if (ModelState.IsValid)
             {
                 domCliRepository.Update(domCli);
-                return RedirectToAction("Index");
+     
             }
-            ViewBag.CodCli = new SelectList(domCliRepository.GetList(null,null), "CodCli", "nomcli", domCli.CodCli);
-            return View(domCli);
+            return RedirectToAction("Edit", "Clientes", new { id = domCli.CodCli.Trim() });
         }
 
         // GET: DomClis/Delete/5
         public ActionResult Delete(string codDom, string codCli)
         {
-            if (codDom == null && codCli == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             var domCli = domCliRepository.GetOne(x => x.CodDom.Equals(codDom) &&
                      x.CodCli.Equals(codCli), null);
 
-            if (domCli == null)
-            {
-                return HttpNotFound();
-            }
-            return View(domCli);
+            domCliRepository.Delete(domCli);
+
+            return RedirectToAction("Edit","Clientes", new { id = codCli.Trim() });
         }
 
         // POST: DomClis/Delete/5

@@ -2,6 +2,7 @@ namespace DAL.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -17,15 +18,19 @@ namespace DAL.Models
 
         [Key]
         [StringLength(4)]
+        [DisplayName("Codigo sublinea")]
         public string CodSubLin { get; set; }
 
         [StringLength(4)]
+        [DisplayName("Codigo linea")]
         public string CodLin { get; set; }
 
         [StringLength(100)]
+        [DisplayName("Descripcion sublinea")]
         public string DesLin { get; set; }
 
         [StringLength(3)]
+        [DisplayName("Estado")]
         public string Estado { get; set; }
 
         public virtual LineaProducto LineaProducto { get; set; }

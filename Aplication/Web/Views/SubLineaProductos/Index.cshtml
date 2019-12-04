@@ -1,0 +1,43 @@
+﻿@model IEnumerable<DAL.Models.SubLineaProducto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LineaProducto.DesLin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DesLin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LineaProducto.DesLin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DesLin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CodSubLin.Trim() }) 
+        </td>
+    </tr>
+}
+
+</table>

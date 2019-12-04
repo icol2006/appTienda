@@ -1,0 +1,57 @@
+﻿@model IEnumerable<DAL.Models.Proveedor>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NomPrv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipdoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numdoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.correo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomPrv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipdoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numdoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.correo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CodPrv }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CodPrv }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CodPrv })
+        </td>
+    </tr>
+}
+
+</table>

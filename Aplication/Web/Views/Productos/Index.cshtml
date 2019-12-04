@@ -1,0 +1,73 @@
+﻿@model IEnumerable<DAL.Models.Producto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LineaProducto.DesLin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubLineaProducto.DesLin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnidadMedida.DesUniMed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomPro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.afectoigv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipPro)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LineaProducto.DesLin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubLineaProducto.DesLin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnidadMedida.DesUniMed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomPro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.precio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.afectoigv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipPro)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CodPro.Trim() }) 
+        </td>
+    </tr>
+}
+
+</table>
