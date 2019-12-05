@@ -172,8 +172,10 @@
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\DomClisController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KardexProductosController.cs" />
     <Compile Include="Controllers\LineaProductosController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProAlmsController.cs" />
     <Compile Include="Controllers\ProductosController.cs" />
     <Compile Include="Controllers\ProveedoresController.cs" />
     <Compile Include="Controllers\SubLineaProductosController.cs" />
@@ -268,7 +270,6 @@
     <Content Include="Views\UnidadMedidas\Index.cshtml" />
     <Content Include="Views\Almacenes\Create.cshtml" />
     <Content Include="Views\Almacenes\Delete.cshtml" />
-    <Content Include="Views\Almacenes\Details.cshtml" />
     <Content Include="Views\Almacenes\Edit.cshtml" />
     <Content Include="Views\Almacenes\Index.cshtml" />
     <Content Include="Views\Proveedores\Create.cshtml" />
@@ -289,6 +290,16 @@
     <Content Include="Views\TabFotos\Delete.cshtml" />
     <Content Include="Views\TabFotos\Edit.cshtml" />
     <Content Include="Views\TabFotos\Index.cshtml" />
+    <Content Include="Views\ProAlms\Create.cshtml" />
+    <Content Include="Views\ProAlms\Delete.cshtml" />
+    <Content Include="Views\ProAlms\Edit.cshtml" />
+    <Content Include="Views\ProAlms\Index.cshtml" />
+    <Content Include="Views\ProAlms\ListarProductosAlmacen.cshtml" />
+    <Content Include="Views\KardexProductos\Create.cshtml" />
+    <Content Include="Views\KardexProductos\Delete.cshtml" />
+    <Content Include="Views\KardexProductos\Details.cshtml" />
+    <Content Include="Views\KardexProductos\Edit.cshtml" />
+    <Content Include="Views\KardexProductos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

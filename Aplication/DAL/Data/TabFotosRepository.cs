@@ -108,7 +108,8 @@ namespace DAL.Data
             {
                 using (DatabaseContext context = new DatabaseContext())
                 {
-                    var res = tabFotos != null ? context.TabFotos.Remove(tabFotos) : null;
+                    context.TabFotos.Attach(tabFotos);
+                    context.Entry(tabFotos).State = EntityState.Deleted;
                     context.SaveChanges();
                 }
             }

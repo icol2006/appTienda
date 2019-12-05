@@ -1,0 +1,45 @@
+﻿@model IEnumerable<DAL.Models.ProAlm>
+
+@{
+    ViewBag.Title = "ListarProductosAlmacen ";
+}
+
+<h2>ListarProductosAlmacen</h2>
+
+<p>
+    @Html.ActionLink("Create New    ", "Create", new { codAlm = (string)@ViewBag.Almacen })
+    @Html.ActionLink("Agregar Productos al stok", "Create", new { codAlm = (string)@ViewBag.Almacen })
+</p>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Almacen.DesAlm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Producto.NomPro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stock)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Almacen.DesAlm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Producto.NomPro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stock)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { CodAlm = item.CodAlm, CodPro = item.CodPro  })
+        </td>
+    </tr>
+}
+
+</table>

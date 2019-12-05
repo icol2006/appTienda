@@ -21,27 +21,11 @@ namespace Web.Controllers
             return View(domCliRepository.GetList(null,new String[] {"Cliente" }));
         }
 
-        // GET: DomClis/Details/5
-        public ActionResult Details(string codDom, string codCli)
-        {
-            if (codDom == null && codCli == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var domCli = domCliRepository.GetOne(x => x.CodDom.Equals(codDom) &&
-             x.CodCli.Equals(codCli), new String[] { "Cliente" });
-
-            if (domCli == null)
-            {
-                return HttpNotFound();
-            }
-            return View(domCli);
-        }
 
         // GET: DomClis/Create
-        public ActionResult Create()
+        public ActionResult Create(String CodCli)
         {
-            ViewBag.CodCli = new SelectList(domCliRepository.GetList(null, new String[] { "Cliente" }), "CodCli", "nomcli");
+            ViewBag.CodCli = new SelectList(domCliRepository.GetList(null, new String[] { "Cliente" }), "CodCli", "CodCli", CodCli);
             return View();
         }
 
@@ -52,10 +36,23 @@ namespace Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CodCli,CodDom,direccion,estado,telefono,correo")] DomCli domCli)
         {
+            ViewBag.Observacion = "";
+
+            var datos = domCliRepository.GetOne(x => x.CodDom.Equals(domCli.CodDom) 
+            && x.CodCli.Equals(domCli.CodCli), null);
+
             if (ModelState.IsValid)
             {
-                domCliRepository.Insert(domCli);
-                return RedirectToAction("Index");
+                if(datos==null)
+                {
+                    domCliRepository.Insert(domCli);
+                    return RedirectToAction("Edit", "Clientes", new { id = domCli.CodCli.Trim() });
+                }
+                else
+                {
+                    ViewBag.Observacion = "Ya existe un registro con el mismo item y tipo";
+                }
+
             }
 
             ViewBag.CodCli = new SelectList(domCliRepository.GetList(null, new String[] { "Cliente" }), "CodCli", "nomcli", domCli.CodCli);

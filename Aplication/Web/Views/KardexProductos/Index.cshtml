@@ -1,0 +1,87 @@
+﻿@model IEnumerable<DAL.Models.KardexProductos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Almacen.DesAlm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Producto.CodLin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoOperacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StokIni)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StokFin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdOperacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModuloOperacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaCreacion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Almacen.DesAlm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Producto.CodLin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoOperacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StokIni)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StokFin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdOperacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModuloOperacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaCreacion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
