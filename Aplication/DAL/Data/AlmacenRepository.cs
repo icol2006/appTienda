@@ -91,6 +91,7 @@ namespace DAL.Data
         {
             try
             {
+                almacen.CodAlm = generarPrimaryKey();
                 using (DatabaseContext context = new DatabaseContext())
                 {
                     context.Set<Almacen>().Add(almacen);
@@ -120,6 +121,29 @@ namespace DAL.Data
                 Console.WriteLine(ex.Message);
             }
 
+        }
+
+        private String generarPrimaryKey()
+        {
+            String res = "", cod = "";
+            Random random = new Random();
+
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            cod = new string(Enumerable.Repeat(chars, 4)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+
+            var datos = GetOne(x => x.CodAlm.Equals(cod), null);
+
+            if (datos == null)
+            {
+                res = cod;
+            }
+            else
+            {
+                generarPrimaryKey();
+            }
+
+            return res;
         }
 
     }

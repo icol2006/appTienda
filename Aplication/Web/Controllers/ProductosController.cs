@@ -31,7 +31,7 @@ namespace Web.Controllers
             ViewBag.CodLin = new SelectList(new LineaProductoRepository().GetList(null,null),
                 "CodLin", "DesLin");
             ViewBag.CodSubLin = new SelectList(new SubLineaProductoRepository().GetList(null,null),
-                "CodSubLin", "CodLin");
+                "CodSubLin", "DesLin");
             ViewBag.CodUniMed = new SelectList(new UnidadMedidaRepository().GetList(null,null), 
                 "CodUnidadMed", "DesUniMed");
             return View();
@@ -51,7 +51,7 @@ namespace Web.Controllers
             ViewBag.CodLin = new SelectList(new LineaProductoRepository().GetList(null, null), 
                 "CodLin", "DesLin", producto.CodLin);
             ViewBag.CodSubLin = new SelectList(new SubLineaProductoRepository().GetList(null, null),
-                "CodSubLin", "CodLin", producto.CodSubLin);
+                "CodSubLin", "DesLin", producto.CodSubLin);
             ViewBag.CodUniMed = new SelectList(new UnidadMedidaRepository().GetList(null, null),
                 "CodUnidadMed", "DesUniMed", producto.CodUniMed);
             return View(producto);

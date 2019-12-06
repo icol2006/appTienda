@@ -25,7 +25,7 @@ namespace Web.Controllers
         // GET: DomClis/Create
         public ActionResult Create(String CodCli)
         {
-            ViewBag.CodCli = new SelectList(domCliRepository.GetList(null, new String[] { "Cliente" }), "CodCli", "CodCli", CodCli);
+            ViewBag.CodCli = new SelectList(new ClienteRepository().GetList(null,null), "CodCli", "CodCli", CodCli);
             return View();
         }
 

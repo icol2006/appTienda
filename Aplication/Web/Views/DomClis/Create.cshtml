@@ -1,83 +1,79 @@
 ﻿@model DAL.Models.DomCli
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Nuevo Domicilio Cliente";
 }
 
-<h2>Create</h2>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
+            <div class="card-head">
+                <header>Nuevo Domicilio Cliente</header>
+                <button id="panel-button"
+                        class="mdl-button mdl-js-button mdl-button--icon pull-right hidden"
+                        data-upgraded=",MaterialButton">
+                    <i class="material-icons">more_vert</i>
+                </button>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                    data-mdl-for="panel-button">
+                    <li class="mdl-menu__item"><i class="material-icons">assistant_photo</i>Action</li>
+                    <li class="mdl-menu__item"><i class="material-icons">print</i>Another action</li>
+                    <li class="mdl-menu__item"><i class="material-icons">favorite</i>Something else here</li>
+                </ul>
+            </div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.DropDownList("CodCli", null, htmlAttributes: new { @class = "form-control hidden" })
+
+                <div class="card-body row">
+                    <div class="col-lg-6 p-t-20">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                            @Html.EditorFor(model => model.CodDom, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
+                            @Html.LabelFor(model => model.CodDom, htmlAttributes: new { @class = "mdl-textfield__label" })
+                            @Html.ValidationMessageFor(model => model.CodDom, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-lg-6 p-t-20">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                            @Html.EditorFor(model => model.direccion, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
+                            @Html.LabelFor(model => model.direccion, htmlAttributes: new { @class = "mdl-textfield__label" })
+                            @Html.ValidationMessageFor(model => model.direccion, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-lg-6 p-t-20">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                            @Html.EditorFor(model => model.estado, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
+                            @Html.LabelFor(model => model.estado, htmlAttributes: new { @class = "mdl-textfield__label" })
+                            @Html.ValidationMessageFor(model => model.estado, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-lg-6 p-t-20">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                            @Html.EditorFor(model => model.telefono, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
+                            @Html.LabelFor(model => model.telefono, htmlAttributes: new { @class = "mdl-textfield__label" })
+                            @Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-lg-6 p-t-20">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                            @Html.EditorFor(model => model.correo, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
+                            @Html.LabelFor(model => model.correo, htmlAttributes: new { @class = "mdl-textfield__label" })
+                            @Html.ValidationMessageFor(model => model.correo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-lg-12 p-t-20 text-right">
+                        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-pink">Salvar</button>
+                    </div>
+
+                  
+                </div>
+            }
 
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>DomCli</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.CodCli, "CodCli", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("CodCli", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.CodCli, "", new { @class = "text-danger" })
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.CodDom, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.CodDom, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.CodDom, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.direccion, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.direccion, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.direccion, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.estado, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.estado, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.estado, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.telefono, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.telefono, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.correo, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.correo, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.correo, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-
-    <h5>
-        @Html.Raw(ViewBag.Observacion)
-    </h5>
-
-</div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {
