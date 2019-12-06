@@ -1,61 +1,93 @@
 ﻿@model IEnumerable<DAL.Models.Vendedor>
 
+
+
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Listado Vendedores";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.nomvnd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tipdoc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.numdoc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.estado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.telefono)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.correo)
-        </th>
-        <th></th>
-    </tr>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-topline-red">
+            <div class="card-head">
+                <header>LISTADO VENDEDORES</header>
+                <div class="tools hidden">
+                    <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+                    <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                    <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
+                </div>
+            </div>
+            <div class="card-body ">
+                <div class="row p-b-20">
+                    <div class="col-md-6 col-sm-6 col-6">
+                        <div class="btn-group">
+                            @Html.ActionLink("Agregar Nuevo", "Create", null, new { @class = "btn btn-info" })
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-striped table-bordered table-hover table-checkable order-column full-width" id="example4">
+                    <thead>
+                        <tr>
+                            <th>
+                                Cod
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.nomvnd)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tipdoc)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.numdoc)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.estado)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.telefono)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.correo)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nomvnd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tipdoc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.numdoc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.telefono)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.correo)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CodVnd.Trim() }) 
-        </td>
-    </tr>
-}
-
-</table>
+                        @foreach (var item in Model)
+                        {
+                        <tr class="odd gradeX">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CodVnd)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.nomvnd)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tipdoc)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.numdoc)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.estado)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.telefono)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.correo)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.CodVnd.Trim() }, new { @class = "label label-sm label-success" })
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
