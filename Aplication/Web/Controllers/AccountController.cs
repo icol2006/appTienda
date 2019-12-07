@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -232,10 +233,19 @@ namespace Web.Controllers
         //
         // GET: /Account/ResetPassword
         [AllowAnonymous]
-        public ActionResult ResetPassword(string code)
+        public ActionResult ResetPassword02(string code)
         {
             return code == null ? View("Error") : View();
         }
+
+        //
+        // GET: /Account/ResetPassword
+        [Authorize]
+        public ActionResult ResetPassword()
+        {
+            return View();
+        }
+
 
         //
         // POST: /Account/ResetPassword
@@ -244,6 +254,39 @@ namespace Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
         {
+            model.Email= System.Web.HttpContext.Current.User.Identity.Name;
+            model.Code = "54654564";
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var user = await UserManager.FindByNameAsync(model.Email);
+            
+            if (user == null)
+            {
+                // Don't reveal that the user does not exist
+                return RedirectToAction("ResetPasswordConfirmation", "Account");
+            }
+
+            var token = await UserManager.GenerateUserTokenAsync("asdf", user.Id);
+            var result = await UserManager.ResetPasswordAsync(user.Id, token, model.Password);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("ResetPasswordConfirmation", "Account");
+            }
+            AddErrors(result);
+            return View();
+        }
+
+        //
+        // POST: /Account/ResetPassword
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ResetPassword02(ResetPasswordViewModel model)
+        {
+           
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -387,12 +430,11 @@ namespace Web.Controllers
 
         //
         // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         //
@@ -449,7 +491,7 @@ namespace Web.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Clientes");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

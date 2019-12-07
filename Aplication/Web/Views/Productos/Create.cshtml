@@ -30,13 +30,6 @@
             <div class="card-body row">
                 <div class="col-lg-6 p-t-20">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-                        @Html.EditorFor(model => model.CodPro, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
-                        @Html.LabelFor(model => model.CodPro, htmlAttributes: new { @class = "mdl-textfield__label" })
-                        @Html.ValidationMessageFor(model => model.CodPro, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="col-lg-6 p-t-20">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
                         @Html.EditorFor(model => model.NomPro, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
                         @Html.LabelFor(model => model.NomPro, htmlAttributes: new { @class = "mdl-textfield__label" })
                         @Html.ValidationMessageFor(model => model.NomPro, "", new { @class = "text-danger" })

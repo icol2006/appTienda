@@ -11,8 +11,9 @@ using DAL.Models;
 
 namespace Web.Controllers
 {
+    [Authorize]
     public class UnidadMedidasController : Controller
-    {
+    {     
         UnidadMedidaRepository unidadMedidaRepository = new UnidadMedidaRepository();
         // GET: UnidadMedidas
         public ActionResult Index()

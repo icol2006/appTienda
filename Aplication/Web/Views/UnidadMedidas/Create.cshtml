@@ -29,13 +29,6 @@
             <div class="card-body row">
                 <div class="col-lg-6 p-t-20">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-                        @Html.EditorFor(model => model.CodUnidadMed, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
-                        @Html.LabelFor(model => model.CodUnidadMed, htmlAttributes: new { @class = "mdl-textfield__label" })
-                        @Html.ValidationMessageFor(model => model.CodUnidadMed, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="col-lg-6 p-t-20">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
                         @Html.EditorFor(model => model.DesUniMed, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
                         @Html.LabelFor(model => model.DesUniMed, htmlAttributes: new { @class = "mdl-textfield__label" })
                         @Html.ValidationMessageFor(model => model.DesUniMed, "", new { @class = "text-danger" })

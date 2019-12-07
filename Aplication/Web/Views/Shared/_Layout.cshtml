@@ -11,8 +11,9 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+   
 </head>
-<body class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white white-sidebar-color logo-white">
+<body class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white white-sidebar-color logo-white" style="font-size:12px">
 
     <div class="page-wrapper">
         <!-- start header -->
@@ -47,7 +48,7 @@
 
                             </a>
                             <ul class="dropdown-menu dropdown-menu-default animated jello">
-                                <li>
+                                <li class="hidden">
                                     <a href="user_profile.html">
                                         <i class="fa fa-user-o"></i> Profile
                                     </a>
@@ -56,9 +57,8 @@
                                 <li class="divider"> </li>
 
                                 <li>
-                                    <a href="login.html">
-                                        <i class="fa fa-sign-out"></i> Log Out
-                                    </a>
+                                    @Html.ActionLink("Salir", "LogOff", "Account", null, new { @class = "fa fa-sign-out" })
+                         
                                 </li>
                             </ul>
                         </li>
@@ -91,14 +91,32 @@
                                         <img src="~/assets/img/dp.jpg" class="img-circle user-img-circle" alt="User Image" />
                                     </div>
                                     <div class="pull-left info">
-                                        <p> Admin</p>
-                                        <a title="Profile" href="user_profile.html"><i class="material-icons">person</i></a>
-                                        <a title="Logout" href="login.html"><i class="material-icons">power_settings_new</i></a>
+                                        <h5><small>@System.Web.HttpContext.Current.User.Identity.Name</small></h5>
+                                        @Html.ActionLink("person", "ResetPassword", "Account", null, new { @class = "material-icons hidden" })
+                                        @Html.ActionLink("power_settings_new", "LogOff", "Account", null, new { @class = "material-icons" })
                                     </div>
                                 </div>
-                            </li>              
-
-
+                            </li>
+                            <!-- start menu almacen -->
+                            <li class="nav-item">
+                                <a href="#" class="nav-link nav-toggle">
+                                    <i class="material-icons">dashboard</i>
+                                    <span class="title">Almacenes</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item">
+                                        @Html.ActionLink("Almacenes", "Index", "Almacenes", null, new { @class = "nav-link" })
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        @Html.ActionLink("Agregar Almacenes", "Create", "Almacenes", null, new { @class = "nav-link" })
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- end menu almacen -->
+                            <!-- start menu Cliente -->
                             <li class="nav-item">
                                 <a href="#" class="nav-link nav-toggle">
                                     <i class="material-icons">dashboard</i>
@@ -116,6 +134,45 @@
                                     </li>
                                 </ul>
                             </li>
+                            <!-- end menu Cliente -->
+                            <!-- start menu vendedor -->
+                            <li class="nav-item">
+                                <a href="#" class="nav-link nav-toggle">
+                                    <i class="material-icons">dashboard</i>
+                                    <span class="title">Vendedores</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item">
+                                        @Html.ActionLink("Vendedores", "Index", "Vendedores", null, new { @class = "nav-link" })
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        @Html.ActionLink("Agregar Vendedores", "Create", "Vendedores", null, new { @class = "nav-link" })
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- end menu vendedor -->
+                            <!-- start menu proveedor -->
+                            <li class="nav-item">
+                                <a href="#" class="nav-link nav-toggle">
+                                    <i class="material-icons">dashboard</i>
+                                    <span class="title">Proveedores</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item">
+                                        @Html.ActionLink("Proveedores", "Index", "Proveedores", null, new { @class = "nav-link" })
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        @Html.ActionLink("Agregar Proveedores", "Create", "Proveedores", null, new { @class = "nav-link" })
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- end menu proveedor -->
                             <!-- start menu producto -->
                             <li class="nav-item">
                                 <a href="#" class="nav-link nav-toggle">
@@ -192,63 +249,6 @@
                                 </ul>
                             </li>
                             <!-- end menu sublinea producto -->
-                            <!-- start menu almacen -->
-                            <li class="nav-item">
-                                <a href="#" class="nav-link nav-toggle">
-                                    <i class="material-icons">dashboard</i>
-                                    <span class="title">Almacenes</span>
-                                    <span class="arrow"></span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li class="nav-item">
-                                        @Html.ActionLink("Almacenes", "Index", "Almacenes", null, new { @class = "nav-link" })
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        @Html.ActionLink("Agregar Almacenes", "Create", "Almacenes", null, new { @class = "nav-link" })
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- end menu almacen -->
-                            <!-- start menu vendedor -->
-                            <li class="nav-item">
-                                <a href="#" class="nav-link nav-toggle">
-                                    <i class="material-icons">dashboard</i>
-                                    <span class="title">Vendedores</span>
-                                    <span class="arrow"></span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li class="nav-item">
-                                        @Html.ActionLink("Vendedores", "Index", "Vendedores", null, new { @class = "nav-link" })
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        @Html.ActionLink("Agregar Vendedores", "Create", "Vendedores", null, new { @class = "nav-link" })
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- end menu vendedor -->
-                            <!-- start menu proveedor -->
-                            <li class="nav-item">
-                                <a href="#" class="nav-link nav-toggle">
-                                    <i class="material-icons">dashboard</i>
-                                    <span class="title">Proveedores</span>
-                                    <span class="arrow"></span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li class="nav-item">
-                                        @Html.ActionLink("Proveedores", "Index", "Proveedores", null, new { @class = "nav-link" })
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        @Html.ActionLink("Agregar Proveedores", "Create", "Proveedores", null, new { @class = "nav-link" })
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- end menu proveedor -->
                         </ul>
                     </div>
                 </div>

@@ -36,7 +36,7 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.estado)
                             </th>
-                            <th></th>
+                           
                             <th></th>
                         </tr>
                     </thead>
@@ -54,9 +54,7 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.estado)
                             </td>
-                            <td>
-                                @Html.ActionLink("Ver productos", "ListarProductosAlmacen", "ProAlms", new { codAlm = item.CodAlm.Trim() }, null)
-                            </td>
+            
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.CodAlm.Trim() }, new { @class = "label label-sm label-success" })
                             </td>

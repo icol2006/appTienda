@@ -89,6 +89,7 @@ namespace DAL.Data
         {
             try
             {
+                proveedor.CodPrv = generarPrimaryKey();
                 using (DatabaseContext context = new DatabaseContext())
                 {
                     context.Set<Proveedor>().Add(proveedor);
@@ -118,6 +119,29 @@ namespace DAL.Data
                 Console.WriteLine(ex.Message);
             }
 
+        }
+
+        private String generarPrimaryKey()
+        {
+            String res = "", cod = "";
+            Random random = new Random();
+
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            cod = new string(Enumerable.Repeat(chars, 6)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+
+            var datos = GetOne(x => x.CodPrv.Equals(cod), null);
+
+            if (datos == null)
+            {
+                res = cod;
+            }
+            else
+            {
+                generarPrimaryKey();
+            }
+
+            return res;
         }
     }
 }

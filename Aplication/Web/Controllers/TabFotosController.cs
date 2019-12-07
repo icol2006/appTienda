@@ -11,6 +11,7 @@ using DAL.Models;
 
 namespace Web.Controllers
 {
+    [Authorize]
     public class TabFotosController : Controller
     {
         TabFotosRepository tabFotosRepository = new TabFotosRepository();

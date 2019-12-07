@@ -30,12 +30,6 @@
             <div class="card-body row">
                 <div class="col-lg-6 p-t-20">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-                        @Html.EditorFor(model => model.CodCli, new { htmlAttributes = new { @class = "mdl-textfield__input hidden" } })
-                        @Html.LabelFor(model => model.CodCli, htmlAttributes: new { @class = "mdl-textfield__label hidden" })
-                    </div>
-                </div>
-                <div class="col-lg-6 p-t-20">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
                         @Html.EditorFor(model => model.nomcli, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
                         @Html.LabelFor(model => model.nomcli, htmlAttributes: new { @class = "mdl-textfield__label" })
                         @Html.ValidationMessageFor(model => model.nomcli, "", new { @class = "text-danger" })

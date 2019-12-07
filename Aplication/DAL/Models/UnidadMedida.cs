@@ -22,7 +22,7 @@ namespace DAL.Models
         public string CodUnidadMed { get; set; }
 
         [StringLength(50)]
-        [DisplayName("Descripcion")]
+        [DisplayName("Descripcion Unidad")]
         public string DesUniMed { get; set; }
 
         [StringLength(3)]

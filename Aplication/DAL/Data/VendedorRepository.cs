@@ -89,11 +89,21 @@ namespace DAL.Data
 
         public Vendedor Insert(Vendedor vendedor)
         {
-            using (DatabaseContext context = new DatabaseContext())
+            try
             {
-                context.Set<Vendedor>().Add(vendedor);
-                context.SaveChanges();
+                vendedor.CodVnd = generarPrimaryKey();
+                using (DatabaseContext context = new DatabaseContext())
+                {
+                    context.Set<Vendedor>().Add(vendedor);
+                    context.SaveChanges();
+                }
             }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+
                 return vendedor;   
         }
 
@@ -104,6 +114,29 @@ namespace DAL.Data
                 var res=vendedor!=null?context.Vendedor.Remove(vendedor):null;
                 context.SaveChanges();
             }                 
+        }
+
+        private String generarPrimaryKey()
+        {
+            String res = "", cod = "";
+            Random random = new Random();
+
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            cod = new string(Enumerable.Repeat(chars, 5)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+
+            var datos = GetOne(x => x.CodVnd.Equals(cod), null);
+
+            if (datos == null)
+            {
+                res = cod;
+            }
+            else
+            {
+                generarPrimaryKey();
+            }
+
+            return res;
         }
 
     }

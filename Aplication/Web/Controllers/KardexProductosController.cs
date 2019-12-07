@@ -10,6 +10,7 @@ using DAL.Models;
 
 namespace Web.Controllers
 {
+    [Authorize]
     public class KardexProductosController : Controller
     {
         private DatabaseContext db = new DatabaseContext();

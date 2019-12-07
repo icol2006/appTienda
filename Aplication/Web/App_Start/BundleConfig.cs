@@ -48,15 +48,15 @@ namespace Web
                       "~/assets/plugins/bootstrap/css/bootstrap.min.css",
                        "~/assets/plugins/material/material.min.css",
                       "~/assets/css/material_style.css",
-                      "~/assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css",
-                     
+                      "~/assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css",                     
                       "~/assets/css/pages/animate_page.css",
                       "~/assets/css/style.css",
                       "~/assets/css/plugins.min.css",
                       "~/assets/css/responsive.css",
                       "~/assets/css/theme-color.css",
                       "~/assets/plugins/dropzone/dropzone.css",
-                      "~/assets/plugins/material-datetimepicker/bootstrap-material-datetimepicker.css"                      
+                      "~/assets/plugins/material-datetimepicker/bootstrap-material-datetimepicker.css" ,
+                      "~/assets/css/estilo.css"
                       ));
         }
     }

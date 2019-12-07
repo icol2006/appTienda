@@ -11,6 +11,7 @@ using DAL.Models;
 
 namespace Web.Controllers
 {
+    [Authorize]
     public class LineaProductosController : Controller
     {
         LineaProductoRepository lineaProductoRepository = new LineaProductoRepository();

@@ -90,6 +90,7 @@ namespace DAL.Data
         {
             try
             {
+                DomCli.CodDom = generarPrimaryKey();
                 using (DatabaseContext context = new DatabaseContext())
                 {
                     context.Set<DomCli>().Add(DomCli);
@@ -123,6 +124,29 @@ namespace DAL.Data
                 Console.WriteLine(ex.Message);
             }
 
+        }
+
+        private String generarPrimaryKey()
+        {
+            String res = "", cod = "";
+            Random random = new Random();
+
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            cod = new string(Enumerable.Repeat(chars, 3)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+
+            var datos = GetOne(x => x.CodDom.Equals(cod), null);
+
+            if (datos == null)
+            {
+                res = cod;
+            }
+            else
+            {
+                generarPrimaryKey();
+            }
+
+            return res;
         }
     }
 }
