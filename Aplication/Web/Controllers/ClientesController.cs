@@ -36,6 +36,7 @@ namespace Web.Controllers
             if (ModelState.IsValid)
             {
                 clienteRepository.Insert(cliente);
+
                 return RedirectToAction("Index");
             }
 
@@ -45,7 +46,9 @@ namespace Web.Controllers
         // GET: Clientes/Edit/5
         public ActionResult Edit(string id)
         {
-            var asd = Request;
+            @ViewBag.resultado = TempData["resultado"];
+            TempData["resultado"] = null;
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -69,7 +72,9 @@ namespace Web.Controllers
             if (ModelState.IsValid)
             {
                 clienteRepository.Update(cliente);
-                return RedirectToAction("Index");
+                TempData["resultado"] = "Grabacion satisfactoria";
+
+                return RedirectToAction("Edit");
             }
             return View(cliente);
         }

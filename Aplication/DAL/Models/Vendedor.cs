@@ -23,18 +23,22 @@ namespace DAL.Models
 
         [StringLength(300)]
         [DisplayName("Nombre vendedor")]
+        [Required]
         public string nomvnd { get; set; }
 
         [StringLength(2)]
         [DisplayName("Tipo documento")]
+        [Required]
         public string tipdoc { get; set; }
 
         [StringLength(20)]
         [DisplayName("Numero documento")]
+        [Required]
         public string numdoc { get; set; }
 
         [StringLength(3)]
         [DisplayName("Estado")]
+        [Required]
         public string estado { get; set; }
 
         [StringLength(20)]

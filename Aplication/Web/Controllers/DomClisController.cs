@@ -27,6 +27,8 @@ namespace Web.Controllers
         public ActionResult Create(String CodCli)
         {
             ViewBag.CodCli = new SelectList(new ClienteRepository().GetList(null,null), "CodCli", "CodCli", CodCli);
+            ViewBag.CodigoCliente = CodCli;
+
             return View();
         }
 
@@ -47,6 +49,7 @@ namespace Web.Controllers
                 if(datos==null)
                 {
                     domCliRepository.Insert(domCli);
+
                     return RedirectToAction("Edit", "Clientes", new { id = domCli.CodCli.Trim() });
                 }
                 else
@@ -63,6 +66,9 @@ namespace Web.Controllers
         // GET: DomClis/Edit/5
         public ActionResult Edit(string codDom, string codCli)
         {
+            @ViewBag.resultado = TempData["resultado"];
+            TempData["resultado"] = null;
+
             if (codDom == null && codCli == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -88,9 +94,12 @@ namespace Web.Controllers
             if (ModelState.IsValid)
             {
                 domCliRepository.Update(domCli);
-     
+                TempData["resultado"] = "Grabacion satisfactoria";
+
             }
-            return RedirectToAction("Edit", "Clientes", new { id = domCli.CodCli.Trim() });
+        //    @Html.ActionLink("Editar", "Edit", "DomClis", new { CodCli = domCli.CodCli.Trim(), CodDom = domCli.CodDom.Trim() }, new { @class = "label label-sm label-success" })
+
+            return RedirectToAction("Edit","DomClis", new { CodCli = domCli.CodCli.Trim(), CodDom = domCli.CodDom.Trim() });
         }
 
         // GET: DomClis/Delete/5

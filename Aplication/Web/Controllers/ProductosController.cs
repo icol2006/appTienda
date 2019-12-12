@@ -29,6 +29,9 @@ namespace Web.Controllers
         // GET: Productos/Create
         public ActionResult Create()
         {
+            @ViewBag.resultado = TempData["resultado"];
+            TempData["resultado"] = null;
+
             ViewBag.CodLin = new SelectList(new LineaProductoRepository().GetList(null,null),
                 "CodLin", "DesLin");
             ViewBag.CodSubLin = new SelectList(new SubLineaProductoRepository().GetList(null,null),
@@ -46,6 +49,8 @@ namespace Web.Controllers
             if (ModelState.IsValid)
             {
                 productoRepository.Insert(producto);
+                TempData["resultado"] = "Grabacion satisfactoria";
+
                 return RedirectToAction("Index");
             }
 
@@ -61,6 +66,9 @@ namespace Web.Controllers
         // GET: Productos/Edit/5
         public ActionResult Edit(string id)
         {
+            @ViewBag.resultado = TempData["resultado"];
+            TempData["resultado"] = null;
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -91,7 +99,9 @@ namespace Web.Controllers
             if (ModelState.IsValid)
             {
                 productoRepository.Update(producto);
-                return RedirectToAction("Index");
+                TempData["resultado"] = "Grabacion satisfactoria";
+
+                return RedirectToAction("Edit");
             }
             ViewBag.CodLin = new SelectList(new LineaProductoRepository().GetList(null, null),
                 "CodLin", "DesLin", producto.CodLin);

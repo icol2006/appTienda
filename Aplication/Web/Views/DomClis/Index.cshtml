@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("content_copy", "Create",null, new { @class = "material-icons", @style = "color:black", data_toggle = "tooltip", data_placement = "top", title = "Nuevo" })
 </p>
 <table class="table">
     <tr>
@@ -38,7 +38,14 @@
             @Html.DisplayFor(modelItem => item.direccion)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.estado)
+            @if (item.estado.Equals("001"))
+            {
+                <span class="label label-sm box-shadow-1 label-success">Activo</span>
+            }
+            else
+            {
+                <span class="label label-sm box-shadow-1 label-warning">Desactivado </span>
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.telefono)

@@ -26,6 +26,8 @@ namespace Web
                       "~/assets/plugins/jquery-blockui/jquery.blockui.min.js",
                       "~/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js",
                       "~/assets/plugins/bootstrap/js/bootstrap.min.js",
+                      "~/assets/plugins/sweet-alert/sweetalert.min.js",
+                      "~/assets/js/pages/sweet-alert/sweet-alert-data.js",
                       "~/assets/plugins/datatables/jquery.dataTables.min.js",
                       "~/assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap4.min.js",
                       "~/assets/js/pages/table/table_data.js",
@@ -39,7 +41,9 @@ namespace Web
                       "~/assets/plugins/material-datetimepicker/datetimepicker.js",
                       "~/assets/plugins/dropzone/dropzone.js",
                       "~/assets/plugins/dropzone/dropzone-call.js",
-                      "~/assets/js/pages/ui/animations.js"
+                      "~/assets/js/pages/ui/animations.js",
+                      "~/assets/plugins/dropzone/dropzone.js",
+                      "~/assets/plugins/dropzone/dropzone-call.js"
                       ));
             
             bundles.Add(new StyleBundle("~/Content/css").Include(
@@ -50,6 +54,8 @@ namespace Web
                       "~/assets/css/material_style.css",
                       "~/assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css",                     
                       "~/assets/css/pages/animate_page.css",
+                      "~/assets/plugins/dropzone/dropzone.css",
+                      "~/assets/plugins/sweet-alert/sweetalert.min.css",
                       "~/assets/css/style.css",
                       "~/assets/css/plugins.min.css",
                       "~/assets/css/responsive.css",

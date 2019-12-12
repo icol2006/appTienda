@@ -118,29 +118,40 @@ namespace DAL.Data
                 Console.WriteLine(ex.Message);
             }
 
-        }
-        
+        }       
+
         private String generarPrimaryKey()
         {
-            String res = "",cod="";
-            Random random = new Random();
+            String res = "";
+            int cod = 0;
 
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            cod= new string(Enumerable.Repeat(chars, 6)
-              .Select(s => s[random.Next(s.Length)]).ToArray());
-
-            var datos = GetOne(x => x.CodCli.Equals(cod),null);
-
-            if (datos == null)
+            try
             {
-                res = cod;
+                using (DatabaseContext context = new DatabaseContext())
+                {
+                    var datos = GetList(null, null).LastOrDefault();
+
+                    if (datos == null)
+                    {
+                        res = "1";
+                        res = res.PadLeft(6, '0');
+                    }
+                    else
+                    {
+                        cod = Convert.ToInt16(datos.CodCli);
+                        cod = cod + 1;
+                        res = cod + "";
+                        res = res.PadLeft(6, '0');
+                    }
+                }
             }
-            else
+            catch (Exception ex)
             {
-                generarPrimaryKey();
+                Console.WriteLine(ex.Message);
             }
 
             return res;
         }
+
     }
 }

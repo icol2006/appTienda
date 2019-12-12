@@ -22,19 +22,23 @@ namespace DAL.Models
         public string CodPrv { get; set; }
 
         [StringLength(500)]
+        [Required]
         [DisplayName("Nombre Proveedor")]
         public string NomPrv { get; set; }
 
         [StringLength(3)]
         [DisplayName("Estado")]
+        [Required]
         public string estado { get; set; }
 
         [StringLength(2)]
         [DisplayName("Tipo documento")]
+        [Required]
         public string tipdoc { get; set; }
 
         [StringLength(20)]
         [DisplayName("Numero documento")]
+        [Required]
         public string numdoc { get; set; }
 
         [StringLength(60)]

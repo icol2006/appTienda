@@ -23,11 +23,13 @@ namespace DAL.Models
         public string CodDom { get; set; }
 
         [StringLength(500)]
+        [Required]
         [DisplayName("Direccion")]
         public string direccion { get; set; }
 
         [StringLength(3)]
         [DisplayName("Estado")]
+        [Required]
         public string estado { get; set; }
 
         [StringLength(20)]

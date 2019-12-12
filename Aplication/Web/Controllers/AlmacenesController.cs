@@ -36,8 +36,9 @@ namespace Web.Controllers
         public ActionResult Create([Bind(Include = "CodAlm,DesAlm,estado")] Almacen almacen)
         {
             if (ModelState.IsValid)
-            {
+            {               
                 almacenRepository.Insert(almacen);
+
                 return RedirectToAction("Index");
             }
 
@@ -47,6 +48,9 @@ namespace Web.Controllers
         // GET: Almacenes/Edit/5
         public ActionResult Edit(string id)
         {
+            @ViewBag.resultado = TempData["resultado"];
+            TempData["resultado"] = null;
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -69,7 +73,9 @@ namespace Web.Controllers
             if (ModelState.IsValid)
             {
                 almacenRepository.Update(almacen);
-                return RedirectToAction("Index");
+                TempData["resultado"] = "Grabacion satisfactoria";
+
+                return RedirectToAction("Edit");
             }
             return View(almacen);
         }

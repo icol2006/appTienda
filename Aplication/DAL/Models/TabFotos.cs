@@ -23,16 +23,18 @@ namespace DAL.Models
 
         [Key]
         [Column(Order = 2)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [DisplayName("Item")]
         public int item { get; set; }
 
         [StringLength(200)]
         [DisplayName("Titulo")]
+        [Required]
         public string titulo { get; set; }
 
         [StringLength(2000)]
         [DisplayName("Descripcion")]
+        [Required]
         public string descripcion { get; set; }
 
         [StringLength(1000)]

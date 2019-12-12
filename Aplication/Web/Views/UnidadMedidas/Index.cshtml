@@ -21,7 +21,7 @@
                 <div class="row p-b-20">
                     <div class="col-md-6 col-sm-6 col-6">
                         <div class="btn-group">
-                            @Html.ActionLink("Agregar Nuevo", "Create", null, new { @class = "btn btn-info" })
+                            @Html.ActionLink("content_copy", "Create", null, new { @class = "btn btn-info" }, new { @class = "material-icons", @style = "color:black", data_toggle = "tooltip", data_placement = "top", title = "Nuevo" })
                         </div>
                     </div>
                 </div>
@@ -52,10 +52,17 @@
                                 @Html.DisplayFor(modelItem => item.DesUniMed)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Estado)
+                                @if (item.Estado.Equals("001"))
+                                {
+                                    <span class="label label-sm box-shadow-1 label-success">Activo</span>
+                                }
+                                else
+                                {
+                                    <span class="label label-sm box-shadow-1 label-warning">Desactivado </span>
+                                }
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.CodUnidadMed.Trim() }, new { @class = "label label-sm label-success" })
+                                @Html.ActionLink("create", "Edit", new { id = item.CodUnidadMed.Trim() }, new { @class = "material-icons", @style = "color:black", data_toggle = "tooltip", data_placement = "top", title = "Editar" })
                             </td>
                         </tr>
                         }

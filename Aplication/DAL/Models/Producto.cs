@@ -24,6 +24,7 @@ namespace DAL.Models
         public string CodPro { get; set; }
 
         [StringLength(4)]
+        [Required]
         [DisplayName("Codigo linea")]
         public string CodLin { get; set; }
 
@@ -32,11 +33,13 @@ namespace DAL.Models
         public string CodSubLin { get; set; }
 
         [StringLength(500)]
+        [Required]
         [DisplayName("Nombre producto")]
         public string NomPro { get; set; }
 
         [StringLength(3)]
         [DisplayName("Estado")]
+        [Required]
         public string estado { get; set; }
 
         [StringLength(3)]
@@ -45,14 +48,17 @@ namespace DAL.Models
 
         [Column(TypeName = "numeric")]
         [DisplayName("Precio")]
+        [Required]
         public decimal? precio { get; set; }
 
         [Column(TypeName = "numeric")]
         [DisplayName("afectoigv")]
+        [Required]
         public decimal? afectoigv { get; set; }
 
         [StringLength(2)]
         [DisplayName("Tipo Producto")]
+        [Required]
         public string TipPro { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

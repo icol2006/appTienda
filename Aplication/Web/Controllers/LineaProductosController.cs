@@ -38,6 +38,7 @@ namespace Web.Controllers
             if (ModelState.IsValid)
             {
                 lineaProductoRepository.Insert(lineaProducto);
+
                 return RedirectToAction("Index");
             }
 
@@ -47,6 +48,9 @@ namespace Web.Controllers
         // GET: LineaProductos/Edit/5
         public ActionResult Edit(string id)
         {
+            @ViewBag.resultado = TempData["resultado"];
+            TempData["resultado"] = null;
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -70,7 +74,9 @@ namespace Web.Controllers
             if (ModelState.IsValid)
             {
                 lineaProductoRepository.Update(lineaProducto);
-                return RedirectToAction("Index");
+                TempData["resultado"] = "Grabacion satisfactoria";
+
+                return RedirectToAction("Edit");
             }
             return View(lineaProducto);
         }

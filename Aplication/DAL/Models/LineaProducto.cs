@@ -23,10 +23,12 @@ namespace DAL.Models
         public string CodLin { get; set; }
 
         [StringLength(100)]
+        [Required]
         [DisplayName("Descripcion linea")]
         public string DesLin { get; set; }
 
         [StringLength(3)]
+        [Required]
         [DisplayName("Estado")]
         public string Estado { get; set; }
 

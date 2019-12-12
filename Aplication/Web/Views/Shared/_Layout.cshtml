@@ -58,12 +58,12 @@
 
                                 <li>
                                     @Html.ActionLink("Salir", "LogOff", "Account", null, new { @class = "fa fa-sign-out" })
-                         
+
                                 </li>
                             </ul>
                         </li>
                         <!-- end manage user dropdown -->
-                        <li class="dropdown dropdown-quick-sidebar-toggler hidden">
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
                             <a id="headerSettingButton" class="mdl-button mdl-js-button mdl-button--icon pull-right" data-upgraded=",MaterialButton">
                                 <i class="material-icons">more_vert</i>
                             </a>
@@ -91,11 +91,19 @@
                                         <img src="~/assets/img/dp.jpg" class="img-circle user-img-circle" alt="User Image" />
                                     </div>
                                     <div class="pull-left info">
-                                        <h5><small>@System.Web.HttpContext.Current.User.Identity.Name</small></h5>
+                                        <h5><small style="color:white">@System.Web.HttpContext.Current.User.Identity.Name</small></h5>
                                         @Html.ActionLink("person", "ResetPassword", "Account", null, new { @class = "material-icons hidden" })
                                         @Html.ActionLink("power_settings_new", "LogOff", "Account", null, new { @class = "material-icons" })
                                     </div>
                                 </div>
+                            </li>
+
+
+
+
+                            <li class="menu-heading ">
+                                <span>-- Mantenimiento</span>
+
                             </li>
                             <!-- start menu almacen -->
                             <li class="nav-item">
@@ -248,6 +256,8 @@
                                     </li>
                                 </ul>
                             </li>
+
+
                             <!-- end menu sublinea producto -->
                         </ul>
                     </div>
@@ -272,16 +282,11 @@
                             </a>
                         </li>
 
-                        <li class="nav-item">
-                            <a href="#quick_sidebar_tab_2" class="nav-link tab-icon" data-toggle="tab">
-                                Settings
-                            </a>
-                        </li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane chat-sidebar-settings in show active animated shake" role="tabpanel" id="quick_sidebar_tab_1">
                             <div class="slimscroll-style">
-                                <div class="theme-light-dark">
+                                <div class="theme-light-dark hidden">
                                     <h6>Sidebar Theme</h6>
                                     <button type="button" data-theme="white" class="btn lightColor btn-outline btn-circle m-b-10 theme-button">Light Sidebar</button>
                                     <button type="button" data-theme="dark" class="btn dark btn-outline btn-circle m-b-10 theme-button">Dark Sidebar</button>
@@ -291,13 +296,13 @@
                                     <ul class="list-unstyled">
                                         <li class="complete">
                                             <div class="theme-color sidebar-theme">
-                                                <a href="#" data-theme="white"><span class="head"></span><span class="cont"></span></a>
-                                                <a href="#" data-theme="dark"><span class="head"></span><span class="cont"></span></a>
-                                                <a href="#" data-theme="blue"><span class="head"></span><span class="cont"></span></a>
-                                                <a href="#" data-theme="indigo"><span class="head"></span><span class="cont"></span></a>
-                                                <a href="#" data-theme="cyan"><span class="head"></span><span class="cont"></span></a>
-                                                <a href="#" data-theme="green"><span class="head"></span><span class="cont"></span></a>
-                                                <a href="#" data-theme="red"><span class="head"></span><span class="cont"></span></a>
+                                                <a href="#" onclick="configurarSideBar('white')" data-theme="white"><span class="head"></span><span class="cont"></span></a>
+                                                <a href="#" onclick="configurarSideBar('dark')" data-theme="dark"><span class="head"></span><span class="cont"></span></a>
+                                                <a href="#" onclick="configurarSideBar('blue')" data-theme="blue"><span class="head"></span><span class="cont"></span></a>
+                                                <a href="#" onclick="configurarSideBar('indigo')" data-theme="indigo"><span class="head"></span><span class="cont"></span></a>
+                                                <a href="#" onclick="configurarSideBar('cyan')" data-theme="cyan"><span class="head"></span><span class="cont"></span></a>
+                                                <a href="#" onclick="configurarSideBar('green')" data-theme="green"><span class="head"></span><span class="cont"></span></a>
+                                                <a href="#" onclick="configurarSideBar('red')" data-theme="red"><span class="head"></span><span class="cont"></span></a>
                                             </div>
                                         </li>
                                     </ul>
@@ -305,13 +310,13 @@
                                     <ul class="list-unstyled">
                                         <li class="theme-option">
                                             <div class="theme-color logo-theme">
-                                                <a href="#" data-theme="logo-white"><span class="head"></span><span class="cont"></span></a>
-                                                <a href="#" data-theme="logo-dark"><span class="head"></span><span class="cont"></span></a>
-                                                <a href="#" data-theme="logo-blue"><span class="head"></span><span class="cont"></span></a>
-                                                <a href="#" data-theme="logo-indigo"><span class="head"></span><span class="cont"></span></a>
-                                                <a href="#" data-theme="logo-cyan"><span class="head"></span><span class="cont"></span></a>
-                                                <a href="#" data-theme="logo-green"><span class="head"></span><span class="cont"></span></a>
-                                                <a href="#" data-theme="logo-red"><span class="head"></span><span class="cont"></span></a>
+                                                <a href="#" onclick="configurarLogo('white')" data-theme="logo-white"><span class="head"></span><span class="cont"></span></a>
+                                                <a href="#" onclick="configurarLogo('dark')" data-theme="logo-dark"><span class="head"></span><span class="cont"></span></a>
+                                                <a href="#" onclick="configurarLogo('blue')" data-theme="logo-blue"><span class="head"></span><span class="cont"></span></a>
+                                                <a href="#" onclick="configurarLogo('indigo')" data-theme="logo-indigo"><span class="head"></span><span class="cont"></span></a>
+                                                <a href="#" onclick="configurarLogo('cyan')" data-theme="logo-cyan"><span class="head"></span><span class="cont"></span></a>
+                                                <a href="#" onclick="configurarLogo('green')" data-theme="logo-green"><span class="head"></span><span class="cont"></span></a>
+                                                <a href="#" onclick="configurarLogo('red')" data-theme="logo-red"><span class="head"></span><span class="cont"></span></a>
                                             </div>
                                         </li>
                                     </ul>
@@ -319,13 +324,13 @@
                                     <ul class="list-unstyled">
                                         <li class="theme-option">
                                             <div class="theme-color header-theme">
-                                                <a href="#" data-theme="header-white"><span class="head"></span><span class="cont"></span></a>
-                                                <a href="#" data-theme="header-dark"><span class="head"></span><span class="cont"></span></a>
-                                                <a href="#" data-theme="header-blue"><span class="head"></span><span class="cont"></span></a>
-                                                <a href="#" data-theme="header-indigo"><span class="head"></span><span class="cont"></span></a>
-                                                <a href="#" data-theme="header-cyan"><span class="head"></span><span class="cont"></span></a>
-                                                <a href="#" data-theme="header-green"><span class="head"></span><span class="cont"></span></a>
-                                                <a href="#" data-theme="header-red"><span class="head"></span><span class="cont"></span></a>
+                                                <a href="#" onclick="configurarHeader('white')" data-theme="header-white"><span class="head"></span><span class="cont"></span></a>
+                                                <a href="#" onclick="configurarHeader('dark')" data-theme="header-dark"><span class="head"></span><span class="cont"></span></a>
+                                                <a href="#" onclick="configurarHeader('blue')" data-theme="header-blue"><span class="head"></span><span class="cont"></span></a>
+                                                <a href="#" onclick="configurarHeader('indigo')" data-theme="header-indigo"><span class="head"></span><span class="cont"></span></a>
+                                                <a href="#" onclick="configurarHeader('cyan')" data-theme="header-cyan"><span class="head"></span><span class="cont"></span></a>
+                                                <a href="#" onclick="configurarHeader('green')" data-theme="header-green"><span class="head"></span><span class="cont"></span></a>
+                                                <a href="#" onclick="configurarHeader('red')" data-theme="header-red"><span class="head"></span><span class="cont"></span></a>
                                             </div>
                                         </li>
                                     </ul>
@@ -333,7 +338,7 @@
                             </div>
                         </div>
                         <!-- Start Setting Panel -->
-                        <div class="tab-pane chat-sidebar-settings animated slideInUp" id="quick_sidebar_tab_2">
+                        <div class="tab-pane chat-sidebar-settings animated slideInUp hidden" id="quick_sidebar_tab_2">
                             <div class="chat-sidebar-settings-list slimscroll-style">
                                 <div class="chat-header"><h5 class="list-heading">Layout Settings</h5></div>
                                 <div class="chatpane inner-content ">
@@ -399,9 +404,230 @@
 
 
 
-
     @Scripts.Render("~/bundles/jquery")
+
     @Scripts.Render("~/bundles/bootstrap")
+
+
     @RenderSection("scripts", required: false)
+
+    <script>
+        function configurarSideBar(datos)
+        {
+            $.ajax({
+            cache: false,
+            type: "GET",
+                url: '@Url.Action("SetSideBar", "Theme")',
+                datatype: "json",
+                data: { "color": datos},
+                success: function (data) {
+                    setSideBar(datos);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+            }
+            });
+        }
+        function configurarHeader(datos) {
+                    $.ajax({
+            cache: false,
+            type: "GET",
+                url: '@Url.Action("SetHeader", "Theme")',
+                datatype: "json",
+                data: { "color": datos},
+                success: function (data) {
+                    SetHeader(datos);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+            }
+            });
+        }
+        function configurarLogo(datos) {
+                    $.ajax({
+            cache: false,
+            type: "GET",
+                url: '@Url.Action("SetLogo", "Theme")',
+                datatype: "json",
+                data: { "color": datos},
+                success: function (data) {
+                    SetLogo(datos);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+            }
+            });
+        }
+
+
+
+            //Cargar themes
+            $.ajax({
+            cache: false,
+            type: "GET",
+                url: '@Url.Action("LoadTheme", "Theme")',
+                datatype: "json",
+                success: function (data) {
+
+            },
+                error: function (xhr, ajaxOptions, thrownError) {
+            }
+            });
+
+
+        //Obtener theme actual
+            $.ajax({
+            cache: false,
+            type: "GET",
+                url: '@Url.Action("GetSideBar", "Theme")',
+                datatype: "json",
+                success: function (data) {
+                    setSideBar(data);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+            }
+            });
+
+
+            //get current Header
+            $.ajax({
+            cache: false,
+            type: "GET",
+                url: '@Url.Action("GetHeader", "Theme")',
+                datatype: "json",
+                success: function (data) {
+                    setHeader(data);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+            }
+            });
+
+
+            //get current Logo
+            $.ajax({
+            cache: false,
+            type: "GET",
+                url: '@Url.Action("GetLogo", "Theme")',
+                datatype: "json",
+                success: function (data) {
+                    setLogo(data);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert('Failed to retrieve books.');
+            }
+        });
+
+
+        //SideBar Configuracion
+        function setSideBar(datos)
+        {
+            var color = datos;
+            jQuery("body").removeClass("white-sidebar-color dark-sidebar-color blue-sidebar-color indigo-sidebar-color green-sidebar-color red-sidebar-color cyan-sidebar-color");
+            switch (color) {
+                case "white":
+                    jQuery("body").addClass("white-sidebar-color");
+                    break;
+                case "dark":
+                    jQuery("body").addClass("dark-sidebar-color");
+                    break;
+                case "blue":
+                    jQuery("body").addClass("blue-sidebar-color");
+                    break;
+                case "indigo":
+                    jQuery("body").addClass("indigo-sidebar-color");
+                    break;
+                case "green":
+                    jQuery("body").addClass("green-sidebar-color");
+                    break;
+                case "red":
+                    jQuery("body").addClass("red-sidebar-color");
+                    break;
+                case "cyan":
+                    jQuery("body").addClass("cyan-sidebar-color");
+                    break;
+                case "default":
+                    jQuery("body").addClass("dark-sidebar-color");
+                    break;
+            }
+        }
+
+
+
+        //Configuracion logo
+        function setLogo(datos)
+        {
+            var color = datos;
+            jQuery("body").removeClass("logo-white logo-dark logo-blue logo-indigo logo-red logo-cyan logo-green");
+
+            switch (color) {
+                case "white":
+                    jQuery("body").addClass("logo-white");
+                    break;
+                case "dark":
+                    jQuery("body").addClass("logo-dark");
+                    break;
+                case "blue":
+                    jQuery("body").addClass("logo-blue");
+                    break;
+                case "indigo":
+                    jQuery("body").addClass("logo-indigo");
+                    break;
+                case "green":
+                    jQuery("body").addClass("logo-green");
+                    break;
+                case "red":
+                    jQuery("body").addClass("logo-red");
+                    break;
+                case "cyan":
+                    jQuery("body").addClass("logo-cyan");
+                    break;
+                default:
+                    jQuery("body").addClass("indigo-white");
+                    break;
+            }
+        }
+
+        //Configuracion Header
+        function setHeader(datos)
+        {
+            var color = datos;
+            jQuery("body").removeClass("header-white header-dark header-blue header-indigo header-red header-cyan header-green");
+
+            switch (color) {
+                case "white":
+                    jQuery("body").addClass("header-white");
+                    break;
+                case "dark":
+                    jQuery("body").addClass("header-dark");
+                    break;
+                case "blue":
+                    jQuery("body").addClass("header-blue");
+                    break;
+                case "indigo":
+                    jQuery("body").addClass("header-indigo");
+                    break;
+                case "green":
+                    jQuery("body").addClass("header-green");
+                    break;
+                case "red":
+                    jQuery("body").addClass("header-red");
+                    break;
+                case "cyan":
+                    jQuery("body").addClass("header-cyan");
+                    break;
+                default:
+                    jQuery("body").addClass("header-blue");
+                    break;
+            }
+        }
+
+
+    </script>
+
+    @if (@ViewBag.resultado != null)
+    {
+        <script>
+        alert('@ViewBag.resultado');
+        </script>
+    }
+
+
 </body>
 </html>

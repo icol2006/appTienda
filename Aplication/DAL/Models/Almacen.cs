@@ -23,10 +23,12 @@ namespace DAL.Models
         public string CodAlm { get; set; }
 
         [StringLength(100)]
+        [Required]
         [DisplayName("Descripcion Almacen")]
         public string DesAlm { get; set; }
 
         [StringLength(3)]
+        [Required]
         [DisplayName("Estado")]
         public string estado { get; set; }
 

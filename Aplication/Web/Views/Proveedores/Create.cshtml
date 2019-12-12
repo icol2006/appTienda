@@ -30,7 +30,7 @@
              
 
             <div class="card-body row">
-                <div class="col-lg-6 p-t-20">
+                <div class="col-lg-6 p-t-20 hidden">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
                         @Html.EditorFor(model => model.CodPrv, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
                         @Html.LabelFor(model => model.CodPrv, htmlAttributes: new { @class = "mdl-textfield__label" })
@@ -45,18 +45,31 @@
                     </div>
                 </div>
                 <div class="col-lg-6 p-t-20">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-                        @Html.EditorFor(model => model.estado, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
-                        @Html.LabelFor(model => model.estado, htmlAttributes: new { @class = "mdl-textfield__label" })
-                        @Html.ValidationMessageFor(model => model.estado, "", new { @class = "text-danger" })
-                    </div>
+                    @Html.LabelFor(model => model.estado, "Estado", htmlAttributes: new { @class = "mdl-textfield__label col-md-2" })
+                    <br />
+                    @Html.DropDownListFor(model => model.estado, new SelectList(
+                    new List<Object>{
+                    new { value = "001" , text = "Activo"  },
+                    new { value = "002" , text = "Anulado" },
+                    },
+                    "value",
+                    "text",
+                    2), new { @class = "form-control" })
+                    <br />
                 </div>
                 <div class="col-lg-6 p-t-20">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-                        @Html.EditorFor(model => model.tipdoc, new { htmlAttributes = new { @class = "mdl-textfield__input" } })
-                        @Html.LabelFor(model => model.tipdoc, htmlAttributes: new { @class = "mdl-textfield__label" })
-                        @Html.ValidationMessageFor(model => model.tipdoc, "", new { @class = "text-danger" })
-                    </div>
+                    @Html.LabelFor(model => model.tipdoc, "Tipo Doc", htmlAttributes: new { @class = "mdl-textfield__label col-md-2" })
+                    <br />
+                    @Html.DropDownListFor(model => model.tipdoc, new SelectList(
+                    new List<Object>{
+                    new { value = "01" , text = "DNI"  },
+                    new { value = "02" , text = "RUC" },
+                    new { value = "03" , text = "Carnet de extrajeria" },
+                    },
+                    "value",
+                    "text",
+                    2), new { @class = "form-control" })
+                    <br />
                 </div>
                 <div class="col-lg-6 p-t-20">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
@@ -73,12 +86,14 @@
                     </div>
                 </div>
 
-                <div class="col-lg-12 p-t-20 text-right">
-                    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-pink">Salvar</button>
-                </div>
+                <div class="row col-12">
+                    <div class="col-6 text-left">
+                        @Html.ActionLink("reply_all", "Index", null, new { @class = "material-icons", data_toggle = "tooltip", data_placement = "top", title = "Volver", @style = "color:black" })
+                    </div>
 
-                <div>
-                    @Html.ActionLink("Volver al listado", "Index")
+                    <div class="col-6 text-right">
+                        <button type="submit" class="material-icons" data-toggle="tooltip" data-placement="top" title="Grabar">save</button>
+                    </div>
                 </div>
 
             </div>

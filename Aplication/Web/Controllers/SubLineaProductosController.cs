@@ -37,9 +37,11 @@ namespace Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CodSubLin,CodLin,DesLin,Estado")] SubLineaProducto subLineaProducto)
         {
+
             if (ModelState.IsValid)
             {
                 subLineaProductoRepository.Insert(subLineaProducto);
+
                 return RedirectToAction("Index");
             }
 
@@ -51,6 +53,9 @@ namespace Web.Controllers
         // GET: SubLineaProductos/Edit/5
         public ActionResult Edit(string id)
         {
+            @ViewBag.resultado = TempData["resultado"];
+            TempData["resultado"] = null;
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -73,7 +78,9 @@ namespace Web.Controllers
             if (ModelState.IsValid)
             {
                 subLineaProductoRepository.Update(subLineaProducto);
-                return RedirectToAction("Index");
+                TempData["resultado"] = "Grabacion satisfactoria";
+
+                return RedirectToAction("Edit");
             }
             ViewBag.CodLin = new SelectList(new LineaProductoRepository().GetList(null, null), 
                 "CodLin", "DesLin", subLineaProducto.CodLin);

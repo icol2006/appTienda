@@ -23,19 +23,23 @@ namespace DAL.Models
         public string CodCli { get; set; }
 
         [StringLength(300)]
+        [Required]
         [DisplayName("Nombre cliente")]
         public string nomcli { get; set; }
 
         [StringLength(2)]
+        [Required]
         [DisplayName("Tipo documento")]
         public string tipdoc { get; set; }
 
         [StringLength(20)]
+        [Required]
         [DisplayName("Numero documento")]
         public string numdoc { get; set; }
 
         [StringLength(3)]
         [DisplayName("Estado")]
+        [Required]
         public string estado { get; set; }
 
         [StringLength(20)]

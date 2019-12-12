@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -26,10 +27,32 @@ namespace Web.Controllers
 
         // GET: TabFotos/Create
         public ActionResult Create(String CodPro)
-        {            
+        {
+
             ViewBag.Codigo = new SelectList(new ProductoRepository().GetList(null, null), "CodPro", "CodPro", CodPro);
-           
+            ViewBag.Producto = CodPro;
             return View();
+        }
+
+        private string subirFoto(String codProducto, String item)
+        {
+            var imagePath = "";
+            var photoName = codProducto + "_" + item;
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+
+                if (file != null && file.ContentLength > 0)
+                {
+                    var extension = Path.GetExtension(file.FileName);
+                    //var fileName = Path.GetFileName(file.FileName);
+                    String path = Path.Combine(Server.MapPath("~/Images/"), photoName + extension);
+                    imagePath = "~/Images/" + photoName + extension;
+                    file.SaveAs(path);                 
+                }
+            }
+
+            return imagePath;
         }
 
         // POST: TabFotos/Create
@@ -38,6 +61,7 @@ namespace Web.Controllers
         public ActionResult Create([Bind(Include = "Tipo,Codigo,item,titulo,descripcion,foto")] TabFotos tabFotos)
         {
             ViewBag.Observacion = "";
+
 
             if (ModelState.IsValid)
             {
@@ -49,7 +73,19 @@ namespace Web.Controllers
                 if (datos == null)
                 {
                     tabFotosRepository.Insert(tabFotos);
-                    return RedirectToAction("Edit", "Productos", new { id = tabFotos.Codigo.Trim() });
+
+                    var pathFoto = subirFoto(tabFotos.Codigo, tabFotos.item + "");
+                    if (pathFoto.Trim().Length > 0)
+                    {                        
+                        tabFotos.foto = pathFoto;                       
+                    }else
+                    {
+                        tabFotos.foto = " ";
+                    }
+
+                    tabFotosRepository.Update(tabFotos);
+
+                    return RedirectToAction( "Edit", "Productos", new { id = tabFotos.Codigo.Trim() });
                 }
                 else
                 {
@@ -65,6 +101,9 @@ namespace Web.Controllers
         // GET: TabFotos/Edit/5
         public ActionResult Edit(string tipo, string codigo,int item)
         {
+            @ViewBag.resultado = TempData["resultado"];
+            TempData["resultado"] = null;
+
             if (tipo == null || codigo==null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -87,12 +126,23 @@ namespace Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Tipo,Codigo,item,titulo,descripcion,foto")] TabFotos tabFotos)
         {
+            var pathFoto = "";
             if (ModelState.IsValid)
             {
+               
+                TempData["resultado"] = "Grabacion satisfactoria";
+
+                pathFoto = subirFoto(tabFotos.Codigo, tabFotos.item + "");
+                if (pathFoto.Trim().Length > 0)
+                {
+                    tabFotos.foto = pathFoto;               
+                }
+
                 tabFotosRepository.Update(tabFotos);
+
             }
 
-            return RedirectToAction("Edit", "Productos", new { id = tabFotos.Codigo.Trim() });
+            return RedirectToAction("Edit", new { Tipo = tabFotos.Tipo.Trim(), Codigo = tabFotos.Codigo.Trim(), item = tabFotos.item });
         }
 
         // GET: DomClis/Delete/5

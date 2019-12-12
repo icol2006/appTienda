@@ -23,14 +23,17 @@ namespace DAL.Models
 
         [StringLength(4)]
         [DisplayName("Codigo linea")]
+        [Required]
         public string CodLin { get; set; }
 
         [StringLength(100)]
         [DisplayName("Descripcion sublinea")]
+        [Required]
         public string DesLin { get; set; }
 
         [StringLength(3)]
         [DisplayName("Estado")]
+        [Required]
         public string Estado { get; set; }
 
         public virtual LineaProducto LineaProducto { get; set; }
